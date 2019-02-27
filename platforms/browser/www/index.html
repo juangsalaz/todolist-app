@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+    </head>
+    <body>
+
+		<div data-role="page">
+
+			<div data-role="header">
+				<h1>Todo List</h1>
+			</div><!-- /header -->
+
+			<div role="main" class="ui-content">
+				<ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true" class="activity-lists">
+					    <!-- <li><a href="#">Apple</a></li>
+					    <li><a href="#">Banana</a></li>
+					    <li><a href="#">Cherry</a></li>
+					    <li><a href="#">Cranberry</a></li>
+					    <li><a href="#">Grape</a></li>
+					    <li><a href="#">Orange</a></li> -->
+				</ul>
+			</div><!-- /content -->
+
+			<div data-role="footer">
+				<p>Copyright 2019</p>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+    </body>
+</html>
+
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			'url': 'http://127.0.0.1:8000/api/v1/activities',
+			'type': 'GET',
+			success: function(data) {
+				
+				console.log(data.data)
+				for (var i = 0; i < data.data.length; i++) {
+					if (i == 0) {
+						$(".activity-lists").append('<li class="ui-first-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="javascript:;">'+data.data[i].activity_name+'</a></li>');
+					} else if (i+1 == data.data.length) {
+						$(".activity-lists").append('<li class="ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="javascript:;">'+data.data[i].activity_name+'</a></li>');
+					} else {
+						$(".activity-lists").append('<li><a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="javascript:;">'+data.data[i].activity_name+'</a></li>');
+					}
+					
+				}
+			}
+		});
+	});
+</script>
