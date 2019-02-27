@@ -1,14 +1,6 @@
-# A Blank PhoneGap App
+# Todo List App
 
-## Usage
+Todo List App to manage your activity every day, created with phonegap and consume this  Todo List API (https://github.com/juangsalaz/todolist-api)
 
-### PhoneGap CLI
-
-    $ phonegap create my-app --template blank
-
-### Desktop
-
-In your browser, open the file:
-
-    /www/index.html
+This app is still on development progress :)
 
