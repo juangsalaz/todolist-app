@@ -8,7 +8,7 @@
     </head>
     <body>
 
-		<div data-role="page" id="index">
+		<div data-role="page" id="index" style="margin-bottom: 20px;">
 
 			<div data-role="header">
 				<h1>Todo List</h1>
@@ -25,9 +25,18 @@
 			<div role="main" class="ui-content">
 				<ul data-role="listview" data-filter="true" data-filter-placeholder="Search..." data-inset="true" id="activity-lists">
 				</ul>
+
+				<div data-role="popup" id="popupMenu" data-theme="b">
+					<ul data-role="listview" data-inset="true" style="min-width:210px;">
+						<li data-role="list-divider">Choose an action</li>
+						<li><a href="#">View details</a></li>
+						<li><a href="#">Edit</a></li>
+						<li><a href="#" id="delete-activity">Delete</a></li>
+					</ul>
+				</div>
 			</div><!-- /content -->
 
-			<div data-role="footer" style="position: fixed; bottom: 0; width: 100%;">
+			<div data-role="footer" style="position: fixed; bottom: 0; width: 100%; z-index: 999999;">
 				<p style="text-align: center; font-size: 12px; font-weight: normal;">Copyright 2019</p>
 			</div><!-- /footer -->
 		</div><!-- /page -->
@@ -83,11 +92,11 @@
 					}
 
 					if (i == 0) {
-						$("#activity-lists").append('<li class="ui-first-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r activity-items" href="#" id="'+data.data[i].id+'">'+data.data[i].activity_name+'<span class="ui-li-count">'+data_length+'</span></a></li>');
+						$("#activity-lists").append('<li class="ui-li-has-alt ui-first-child"><a class="ui-btn activity-items" href="#" id="'+data.data[i].id+'">'+data.data[i].activity_name+'<span class="ui-li-count">'+data_length+'</span></a><a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a" class="ui-btn ui-btn-icon-notext ui-icon-gear ui-btn-a"></a></li>');
 					} else if (i+1 == data.data.length) {
-						$("#activity-lists").append('<li class="ui-last-child"><a class="ui-btn ui-btn-icon-right ui-icon-carat-r activity-items" href="#" id="'+data.data[i].id+'">'+data.data[i].activity_name+'<span class="ui-li-count">'+data_length+'</span></a></li>');
+						$("#activity-lists").append('<li class="ui-li-has-alt ui-last-child"><a class="ui-btn activity-items" href="#" id="'+data.data[i].id+'">'+data.data[i].activity_name+'<span class="ui-li-count">'+data_length+'</span></a><a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a" class="ui-btn ui-btn-icon-notext ui-icon-gear ui-btn-a"></a></li>');
 					} else {
-						$("#activity-lists").append('<li><a class="ui-btn ui-btn-icon-right ui-icon-carat-r activity-items" href="#" id="'+data.data[i].id+'">'+data.data[i].activity_name+'<span class="ui-li-count">'+data_length+'</span></a></li>');
+						$("#activity-lists").append('<li class="ui-li-has-alt"><a class="ui-btn activity-items" href="#" id="'+data.data[i].id+'">'+data.data[i].activity_name+'<span class="ui-li-count">'+data_length+'</span></a><a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a" class="ui-btn ui-btn-icon-notext ui-icon-gear ui-btn-a"></a></li>');
 					}
 					
 				}
